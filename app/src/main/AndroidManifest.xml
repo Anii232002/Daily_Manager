@@ -10,21 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyManager">
         <activity
-            android:name=".Habits"
-            android:exported="true" />
-        <activity
-            android:name=".Expenses"
-            android:exported="true" />
+            android:name=".Notes"
+            android:exported="true"
+            android:label="@string/title_activity_notes"
+            android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
             android:name=".Todo"
             android:exported="true"
             android:label="@string/title_activity_todo"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
-            android:name=".Notes"
-            android:exported="true"
-            android:label="@string/title_activity_notes"
-            android:theme="@style/Theme.DailyManager.NoActionBar" />
+            android:name=".Habits"
+            android:exported="true" />
+        <activity
+            android:name=".Expenses"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
