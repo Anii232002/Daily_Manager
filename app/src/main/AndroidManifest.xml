@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyManager">
         <activity
+            android:name=".NotesAddition"
+            android:exported="true" />
+        <activity
             android:name=".Notes"
             android:exported="true"
             android:label="@string/title_activity_notes"
