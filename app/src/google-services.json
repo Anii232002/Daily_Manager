@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "768909417956",
+    "project_id": "daily-manager-6f80c",
+    "storage_bucket": "daily-manager-6f80c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768909417956:android:db86b126a3ee5cb689bbf1",
+        "android_client_info": {
+          "package_name": "com.example.dailymanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768909417956-8d9fatd34c9cdv48o04qhdm98fuqrtvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dailymanager",
+            "certificate_hash": "23e5ec5ba660263fb37a6ff559e8c388f3237055"
+          }
+        },
+        {
+          "client_id": "768909417956-unsj9hqu1aht7rgqqatp6ilvb6p6rtb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeBpq0EWLgi9VXMD_9BQKIFi9FEC7zjKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768909417956-unsj9hqu1aht7rgqqatp6ilvb6p6rtb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
