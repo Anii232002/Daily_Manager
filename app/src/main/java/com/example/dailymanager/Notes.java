@@ -52,7 +52,7 @@ public class Notes extends AppCompatActivity {
 
     private void EventChangeListener() {
 
-        db.collection("Notes")
+        db.collection("notes")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
