@@ -1,7 +1,9 @@
 package com.example.dailymanager.dataclass;
 
 public class Note {
-    String title,description;
+
+
+  public String title,description;
 
     public Note()
     {

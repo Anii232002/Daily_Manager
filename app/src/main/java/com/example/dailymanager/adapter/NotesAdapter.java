@@ -9,20 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dailymanager.Note;
+
 import com.example.dailymanager.R;
 import com.example.dailymanager.dataclass.Note;
 
 import java.util.ArrayList;
 
-public class NotesAdapter {
 
-    public static class CustomAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
+
+    public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
         Context context;
         ArrayList<Note> noteArrayList;   //arraylist of type note class which we created
 
-        public CustomAdapter(Context context, ArrayList<Note> noteArrayList) {
+        public NotesAdapter(Context context, ArrayList<Note> noteArrayList) {
             this.context = context;
             this.noteArrayList = noteArrayList;
         }
@@ -44,18 +44,18 @@ public class NotesAdapter {
         @Override
         public int getItemCount() {
             return noteArrayList.size();
-                    
+
         }
 
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title,description;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);                   //initialising each variable with its id
-            title = itemView.findViewById(R.id.title);
-            description = itemView.findViewById(R.id.description);
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            TextView title,description;
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);                   //initialising each variable with its id
+                title = itemView.findViewById(R.id.title);
+                description = itemView.findViewById(R.id.description);
+            }
         }
     }
 
-}
+
+
