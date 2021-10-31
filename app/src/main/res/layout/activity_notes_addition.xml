@@ -16,7 +16,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,28 +32,30 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+
+        app:layout_constraintBottom_toTopOf="@+id/edttitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.797" />
+        app:layout_constraintVertical_bias="0.347" />
 
     <EditText
         android:id="@+id/edttitle"
         android:layout_width="372dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="484dp"
+        android:layout_marginTop="196dp"
         android:background="#ECECEC"
         android:hint="Add TEXT"
         android:inputType="text"
         android:padding="10dp"
         android:textAlignment="center"
+
         android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/txtdescription"
@@ -65,10 +67,10 @@
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edttitle"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.182" />
 
     <EditText
         android:id="@+id/edtdescription"
@@ -82,10 +84,10 @@
         android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtdescription"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.158" />
 
     <Button
         android:id="@+id/button"
