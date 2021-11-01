@@ -13,12 +13,7 @@ import android.view.View;
 
 import com.example.dailymanager.adapter.NotesAdapter;
 import com.example.dailymanager.dataclass.Note;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firestore.v1.Document;
+
 
 import java.util.ArrayList;
 

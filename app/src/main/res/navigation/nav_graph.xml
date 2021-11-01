@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/expenseHome">
+
+    <fragment
+        android:id="@+id/expenseHome"
+        android:name="com.example.dailymanager.ExpenseHome"
+        android:label="fragment_expense_home"
+        tools:layout="@layout/fragment_expense_home" >
+        <action
+            android:id="@+id/action_expenseHome_to_fieldSelection"
+            app:destination="@id/fieldSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/fieldSelection"
+        android:name="com.example.dailymanager.FieldSelection"
+        android:label="fragment_field_selection"
+        tools:layout="@layout/fragment_field_selection" >
+        <action
+            android:id="@+id/action_fieldSelection_to_incomeFragment"
+            app:destination="@id/incomeFragment" />
+        <action
+            android:id="@+id/action_fieldSelection_to_expenseFragment"
+            app:destination="@id/expenseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.example.dailymanager.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" />
+    <fragment
+        android:id="@+id/expenseFragment"
+        android:name="com.example.dailymanager.ExpenseFragment"
+        android:label="fragment_expense"
+        tools:layout="@layout/fragment_expense" />
+</navigation>
