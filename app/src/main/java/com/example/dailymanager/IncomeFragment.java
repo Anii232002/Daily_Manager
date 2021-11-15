@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dailymanager.adapter.IncomeAdapter;
-import com.example.dailymanager.dataclass.IncomeItems;
+import com.example.dailymanager.dataclass.DataItems;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class IncomeFragment extends Fragment {
 
     RecyclerView incomeRecyclerView;
     IncomeAdapter adapter;
-    List<IncomeItems> items=new ArrayList<>();
+    List<DataItems> items=new ArrayList<>();
 
 
 
@@ -55,11 +56,11 @@ public class IncomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        items.add(new IncomeItems("Salary",R.drawable.salary));
-        items.add(new IncomeItems("Awards",R.drawable.awards));
+        items.add(new DataItems("Salary",R.drawable.salary));
+        items.add(new DataItems("Awards",R.drawable.awards));
 
         incomeRecyclerView=view.findViewById(R.id.recycler_view_income);
-        incomeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        incomeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
         adapter=new IncomeAdapter(items,getContext());
         incomeRecyclerView.setAdapter(adapter);
 

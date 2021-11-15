@@ -10,8 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.dailymanager.CustomDialog;
 import com.example.dailymanager.R;
-import com.example.dailymanager.dataclass.IncomeItems;
+import com.example.dailymanager.dataclass.DataItems;
+import com.example.dailymanager.dataclass.DialogDetails;
+
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
@@ -21,10 +24,10 @@ import java.util.Map;
 import java.util.zip.Inflater;
 
 public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder> {
-    List<IncomeItems> items=new ArrayList<>();
+    List<DataItems> items=new ArrayList<>();
     Context context;
 
-    public IncomeAdapter(List<IncomeItems> items, Context context){
+    public IncomeAdapter(List<DataItems> items, Context context){
         this.items=items;
         this.context=context;
     }
@@ -40,10 +43,21 @@ public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeView
 
     @Override
     public void onBindViewHolder(@NonNull IncomeAdapter.IncomeViewHolder holder, int position) {
-            IncomeItems icItems=items.get(position);
+            DataItems icItems=items.get(position);
 
             holder.text.setText(icItems.getItem());
         Glide.with(context).load(icItems.getItemImages()).into(holder.image);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogDetails d=new DialogDetails();
+                d.setCategory(icItems.getItem());
+                d.setSection("income");
+                CustomDialog cd=new CustomDialog(context);
+                cd.show();
+            }
+        });
     }
 
     @Override

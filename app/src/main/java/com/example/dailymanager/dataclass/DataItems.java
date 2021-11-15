@@ -1,10 +1,10 @@
 package com.example.dailymanager.dataclass;
 
-public class IncomeItems {
+public class DataItems {
     private String item;
     private int itemImages;
 
-    public IncomeItems(String item,int itemImages) {
+    public DataItems(String item,int itemImages) {
         this.item = item;
         this.itemImages = itemImages;
     }

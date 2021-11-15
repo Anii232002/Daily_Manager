@@ -10,7 +10,8 @@
         android:id="@+id/recycler_view_income"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="income_fragment"
         tools:listitem="@layout/income_items"/>
+
+
 
 </RelativeLayout>
