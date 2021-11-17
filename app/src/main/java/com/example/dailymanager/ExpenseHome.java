@@ -19,7 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.dailymanager.adapter.ExpensesListAdapter;
+import com.example.dailymanager.adapter.IncomeListAdapter;
 import com.example.dailymanager.BalanceCheckDatabase.BalanceSheetEntity;
 import com.example.dailymanager.database.DataBaseEntity;
 import com.example.dailymanager.database.ExpenseDataEntity;
@@ -27,7 +27,6 @@ import com.example.dailymanager.database.ExpensesViewModel;
 import com.example.dailymanager.dataclass.DialogDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,22 +34,24 @@ import java.util.List;
 public class ExpenseHome extends Fragment {
 
     ExpensesViewModel expensesViewModel;
+    private static final String INCOME_KEY="income_key";
     private static final String EXPENSE_KEY="expense_key";
     RecyclerView mainRecyclerView;
+    BalanceSheetEntity b1;
     DataBaseEntity d;
+    TextView expensesText;
     ExpenseDataEntity expenseDataEntity;
-        boolean set=false;
-    List<BalanceSheetEntity> list=new ArrayList<>();
+    TextView balanceText;
     TextView message;
     TextView incomeMain;
 
 
 
 
-    ExpensesListAdapter adapter;
+    IncomeListAdapter adapter;
+
     
 
-    int totalIncome=0;
 
     public ExpenseHome() {
         // Required empty public constructor
@@ -63,11 +64,7 @@ public class ExpenseHome extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-
-
+        
     }
 
 
@@ -79,41 +76,40 @@ public class ExpenseHome extends Fragment {
         // Inflate the layout for this fragment
        View v= inflater.inflate(R.layout.fragment_expense_home, container, false);
         message=v.findViewById(R.id.message_text_view);
+        expensesText=v.findViewById(R.id.expense_display);
+        balanceText=v.findViewById(R.id.balance_text_view);
 
-        adapter=new ExpensesListAdapter(getActivity());
+        adapter=new IncomeListAdapter(getActivity());
+
         expensesViewModel=new ViewModelProvider(this,new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(ExpensesViewModel.class);
 
         DialogDetails details=new DialogDetails();
-
-        if (details.getSection().equals("income"))
-            d=new DataBaseEntity(details.getCategory(),details.getIncome());
-        else
-            d=new DataBaseEntity(details.getCategory(),String.valueOf(details.getExpense()));
-
-
-
-
         SharedPreferences shrd=getActivity().getSharedPreferences("demo",Context.MODE_PRIVATE);
-        BalanceSheetEntity b1=new BalanceSheetEntity(shrd.getInt(EXPENSE_KEY,0)+Integer.parseInt(details.getIncome()),0,0);
-
+        SharedPreferences expensesshrd=getActivity().getSharedPreferences("expenses",Context.MODE_PRIVATE);
         incomeMain=v.findViewById(R.id.income_text_view);
 
 
+           if (details.getSection().equals("income"))
+            d=new DataBaseEntity(details.getCategory(),details.getIncome());
+        else
+        expenseDataEntity=new ExpenseDataEntity(details.getExpense(), details.getCategory());
 
 
+        b1=new BalanceSheetEntity(shrd.getInt(INCOME_KEY,0)+Integer.parseInt(details.getIncome()),expensesshrd.getInt(EXPENSE_KEY,0)+details.getExpense());
 
 
-
-        if (!(d.getAmount()==null || d.getCategory()==null) && DialogDetails.isAdd()) {
+        if (details.getSection().equals("income") && !(d.getAmount()==null || d.getCategory()==null) && DialogDetails.isAdd()) {
             expensesViewModel.insert(d);
             DialogDetails.setAdd(false);
 
 
             SharedPreferences.Editor editor=shrd.edit();
-            editor.putInt(EXPENSE_KEY,b1.getIncome());
+            editor.putInt(INCOME_KEY,b1.getIncome());
             editor.apply();
 
-            incomeMain.setText(String.valueOf(shrd.getInt(EXPENSE_KEY,0)));
+            incomeMain.setText("+"+String.valueOf(shrd.getInt(INCOME_KEY,0)));
+            b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
+            balanceText.setText(String.valueOf(b1.getBalance()));
 
             //incomeMain.setText(String.valueOf(b1.getIncome()));
             Log.v("TAG",String.valueOf(b1.getIncome()));
@@ -122,11 +118,29 @@ public class ExpenseHome extends Fragment {
 
         }
        else {
-            incomeMain.setText(String.valueOf(shrd.getInt(EXPENSE_KEY, 0)));
-
+            incomeMain.setText("+"+String.valueOf(shrd.getInt(INCOME_KEY, 0)));
+            balanceText.setText(String.valueOf(b1.getBalance()));
         }
 
+       if ( details.getSection().equals("expense") && !(expenseDataEntity.getCategory()==null) && DialogDetails.isAdd()){
+           expensesViewModel.insert(expenseDataEntity);
+           DialogDetails.setAdd(false);
 
+           SharedPreferences.Editor editor= expensesshrd.edit();
+
+           editor.putInt(EXPENSE_KEY,b1.getExpense());
+           editor.apply();
+
+           expensesText.setText("-"+String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+
+           b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
+           balanceText.setText(String.valueOf(b1.getBalance()));
+       }
+       else{
+           expensesText.setText("-"+String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+
+           balanceText.setText(String.valueOf(b1.getBalance()));
+       }
 
 
 
@@ -137,12 +151,18 @@ public class ExpenseHome extends Fragment {
             public void onChanged(List<DataBaseEntity> dataBaseEntities) {
                 adapter.setExpensesList(dataBaseEntities);
 
+                if (!dataBaseEntities.isEmpty())
                 message.setVisibility(View.GONE);
             }
 
         });
 
-
+       expensesViewModel.getAllExpenses().observe(getActivity(), new Observer<List<ExpenseDataEntity>>() {
+           @Override
+           public void onChanged(List<ExpenseDataEntity> expenseDataEntities) {
+               adapter.setList(expenseDataEntities);
+           }
+       });
 
 
               return v;
@@ -156,9 +176,7 @@ public class ExpenseHome extends Fragment {
 
 
         mainRecyclerView=view.findViewById(R.id.main_recycler_view);
-
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         mainRecyclerView.setAdapter(adapter);
 
 

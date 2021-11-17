@@ -30,7 +30,7 @@ public class ExpensesRepository {
     }
 
     public void insert(ExpenseDataEntity expenseDataEntity){
-
+        new InsertExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
     }
 
     public void update(DataBaseEntity dataBaseEntity){
