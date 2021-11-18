@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ import com.example.dailymanager.database.ExpensesViewModel;
 import com.example.dailymanager.dataclass.DialogDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,6 +41,8 @@ public class ExpenseHome extends Fragment {
     RecyclerView mainRecyclerView;
     BalanceSheetEntity b1;
     DataBaseEntity d;
+    SharedPreferences shrd;
+    SharedPreferences expensesshrd;
     TextView expensesText;
     ExpenseDataEntity expenseDataEntity;
     TextView balanceText;
@@ -84,10 +88,10 @@ public class ExpenseHome extends Fragment {
         expensesViewModel=new ViewModelProvider(this,new ViewModelProvider.AndroidViewModelFactory(getActivity().getApplication())).get(ExpensesViewModel.class);
 
         DialogDetails details=new DialogDetails();
-        SharedPreferences shrd=getActivity().getSharedPreferences("demo",Context.MODE_PRIVATE);
-        SharedPreferences expensesshrd=getActivity().getSharedPreferences("expenses",Context.MODE_PRIVATE);
+        shrd=getActivity().getSharedPreferences("demo",Context.MODE_PRIVATE);
+         expensesshrd=getActivity().getSharedPreferences("expenses",Context.MODE_PRIVATE);
         incomeMain=v.findViewById(R.id.income_text_view);
-
+        
 
            if (details.getSection().equals("income"))
             d=new DataBaseEntity(details.getCategory(),details.getIncome());
@@ -107,7 +111,7 @@ public class ExpenseHome extends Fragment {
             editor.putInt(INCOME_KEY,b1.getIncome());
             editor.apply();
 
-            incomeMain.setText("+"+String.valueOf(shrd.getInt(INCOME_KEY,0)));
+            incomeMain.setText(String.valueOf(shrd.getInt(INCOME_KEY,0)));
             b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
             balanceText.setText(String.valueOf(b1.getBalance()));
 
@@ -118,7 +122,7 @@ public class ExpenseHome extends Fragment {
 
         }
        else {
-            incomeMain.setText("+"+String.valueOf(shrd.getInt(INCOME_KEY, 0)));
+            incomeMain.setText(String.valueOf(shrd.getInt(INCOME_KEY, 0)));
             balanceText.setText(String.valueOf(b1.getBalance()));
         }
 
@@ -131,13 +135,13 @@ public class ExpenseHome extends Fragment {
            editor.putInt(EXPENSE_KEY,b1.getExpense());
            editor.apply();
 
-           expensesText.setText("-"+String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+           expensesText.setText(String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
 
            b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
            balanceText.setText(String.valueOf(b1.getBalance()));
        }
        else{
-           expensesText.setText("-"+String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+           expensesText.setText(String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
 
            balanceText.setText(String.valueOf(b1.getBalance()));
        }
@@ -165,6 +169,8 @@ public class ExpenseHome extends Fragment {
        });
 
 
+
+
               return v;
     }
 
@@ -180,6 +186,37 @@ public class ExpenseHome extends Fragment {
         mainRecyclerView.setAdapter(adapter);
 
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                List<DataBaseEntity> data=expensesViewModel.getAllIncome().getValue();
+                if (viewHolder instanceof IncomeListAdapter.IncomeListHolder){
+                    expensesViewModel.delete(adapter.getDataAt(((IncomeListAdapter.IncomeListHolder)viewHolder).getAdapterPosition()));
+                    SharedPreferences.Editor editor=shrd.edit();
+                    int currentIncome= shrd.getInt(INCOME_KEY,0);
+                    int deletedIncome=Integer.parseInt(data.get(((IncomeListAdapter.IncomeListHolder)viewHolder).getAdapterPosition()).getAmount());
+                    editor.putInt(INCOME_KEY,currentIncome-deletedIncome);
+                    editor.apply();
+                    incomeMain.setText(String.valueOf(shrd.getInt(INCOME_KEY,0)));
+
+                }
+                if(viewHolder instanceof IncomeListAdapter.ExpensesListHolder){
+                    expensesViewModel.delete(adapter.getExpenseAt(((IncomeListAdapter.ExpensesListHolder)viewHolder).getAdapterPosition()));
+                    SharedPreferences.Editor editor=expensesshrd.edit();
+                    int currentExpense=expensesshrd.getInt(EXPENSE_KEY,0);
+                    List<ExpenseDataEntity> expenseData=expensesViewModel.getAllExpenses().getValue();
+                    int deletedExpense=expenseData.get(((IncomeListAdapter.ExpensesListHolder) viewHolder).getAdapterPosition()- data.size()).getExpense();
+                    editor.putInt(EXPENSE_KEY,currentExpense-deletedExpense);
+                    editor.apply();
+                    expensesText.setText(String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+                }
+            }
+        }).attachToRecyclerView(mainRecyclerView);
 
 
         FloatingActionButton fab=view.findViewById(R.id.floating_button);

@@ -1,6 +1,7 @@
 package com.example.dailymanager.adapter;
 
 import android.content.Context;
+import android.content.Entity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,6 +84,14 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         //.setText(String.valueOf(balanceList.get(position).getIncome()));
 
 
+    }
+
+    public DataBaseEntity getDataAt(int position){
+         return expensesList.get(position);
+    }
+
+    public ExpenseDataEntity getExpenseAt(int position){
+         return list.get(position- expensesList.size());
     }
 
     @Override
