@@ -3,9 +3,37 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/book.xml" value="0.2203125" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/exercise.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/fastfood.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/food.xml" value="0.9535714285714286" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_baseline_directions_walk_24.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_baseline_fastfood_24.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_food_selected.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_outline_smoke_free_24.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_read.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_smoke.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_walk.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/ic_walk_selected.xml" value="0.10555555555555556" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/round_button.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/drawable/smoke.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/activity_habits.xml" value="0.1" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/activity_new_habit.xml" value="0.1" />
         <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/activity_notes.xml" value="0.11639492753623189" />
         <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/activity_notes_addition.xml" value="0.1068840579710145" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/fragment_field_selection.xml" value="0.1852355072463768" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/fragment_habit_list.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/fragment_habit_new.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/fragment_habits_update.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/fragment_income.xml" value="0.1" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/habits_items.xml" value="0.17" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/habits_update.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/income_items.xml" value="0.1" />
         <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/item.xml" value="0.12681159420289856" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/layout/recycler_habit_item.xml" value="0.1933876811594203" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/menu/nav_habit.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Anirudh/StudioProjects/Daily_Manager/app/src/main/res/menu/nav_single_habit.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/singh/AndroidStudioProjects/DailyManager/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/singh/AndroidStudioProjects/Daily_Manager/app/src/main/res/layout/activity_main.xml" value="0.128" />
         <entry key="..\:/Users/singh/AndroidStudioProjects/Daily_Manager/app/src/main/res/layout/activity_notes.xml" value="0.1" />
