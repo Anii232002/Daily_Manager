@@ -117,7 +117,8 @@ public class CustomDialog extends Dialog {
                if (details.getSection().equals("income"))
                details.setIncome(input);
                else
-                   details.setExpense(Integer.parseInt(input));
+               details.setExpense(Integer.parseInt(input));
+
 
 
                 DialogDetails.setAdd(true);

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.dailymanager.BalanceCheckDatabase.BalanceSheetEntity;
 
@@ -30,7 +31,7 @@ public class ExpensesRepository {
     }
 
     public void insert(ExpenseDataEntity expenseDataEntity){
-
+        new InsertExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
     }
 
     public void update(DataBaseEntity dataBaseEntity){
@@ -40,7 +41,7 @@ public class ExpensesRepository {
         new DeleteAsyncTask(incomeDao).execute(dataBaseEntity);
     }
     public void delete(ExpenseDataEntity expenseDataEntity){
-
+        new DeleteExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
     }
 
     public void deleteAll(){
@@ -122,6 +123,19 @@ public class ExpensesRepository {
         @Override
         protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
             expenseDao.insert(expenseDataEntities[0]);
+            return null;
+        }
+    }
+
+    public static class DeleteExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void>{
+        ExpenseDao expenseDao;
+
+        public DeleteExpenseAsyncTask(ExpenseDao expenseDao){
+            this.expenseDao=expenseDao;
+        }
+        @Override
+        protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
+            expenseDao.delete(expenseDataEntities[0]);
             return null;
         }
     }
