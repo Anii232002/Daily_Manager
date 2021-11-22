@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dailymanager"
-    >
+    package="com.example.dailymanager">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyManager">
+
         <activity
             android:name=".NotesAddition"
             android:exported="true" />
@@ -24,9 +25,6 @@
             android:exported="true"
             android:label="@string/title_activity_todo"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
-        <activity
-            android:name=".Habits"
-            android:exported="true" />
         <activity
             android:name=".Expenses"
             android:exported="true" />

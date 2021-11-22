@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void habits(View view) {
-        Intent intent = new Intent(this,Habits.class);
+        Intent intent = new Intent(this,HabitsList.class);
         startActivity(intent);
     }
 

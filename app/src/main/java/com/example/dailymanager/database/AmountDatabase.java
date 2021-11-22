@@ -1,14 +1,17 @@
 package com.example.dailymanager.database;
 
+import android.app.Application;
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {DataBaseEntity.class,ExpenseDataEntity.class},version=2)
+@Database(entities = {DataBaseEntity.class,ExpenseDataEntity.class,HabitsDataEntity.class},version=2)
 public abstract class AmountDatabase extends RoomDatabase {
     private static AmountDatabase instance;
+
+
 
     public abstract IncomeDao getIncomeDao();
     public abstract ExpenseDao getExpenseDao();
