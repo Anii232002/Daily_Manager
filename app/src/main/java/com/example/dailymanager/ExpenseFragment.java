@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.dailymanager.adapter.ExpenseAdapter;
 import com.example.dailymanager.dataclass.DataItems;
+import com.example.dailymanager.dataclass.DialogDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,8 @@ public class ExpenseFragment extends Fragment {
         expenseItems.add(new DataItems("Bills",R.drawable.bill));
         expenseAdapter=new ExpenseAdapter(expenseItems,getContext());
         expenseRecyclerView.setAdapter(expenseAdapter);
+
+
 
                 return view;
     }

@@ -37,10 +37,21 @@ public class ExpensesViewModel extends AndroidViewModel {
 
     public void delete(DataBaseEntity dataBaseEntity){
         expensesRepository.delete(dataBaseEntity);
-    }public void update(DataBaseEntity dataBaseEntity){
+    }
+    public void update(DataBaseEntity dataBaseEntity){
         expensesRepository.update(dataBaseEntity);
-    }public void deleteAll(){
+    }
+
+    public void update(ExpenseDataEntity expenseDataEntity){
+        expensesRepository.update(expenseDataEntity);
+    }
+
+    public void deleteAll(){
         expensesRepository.deleteAll();
+    }
+
+    public void deleteAllExpenses(){
+        expensesRepository.deleteExpenseAll();
     }
 
     public LiveData<List<DataBaseEntity>> getAllIncome() {

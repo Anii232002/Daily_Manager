@@ -27,6 +27,8 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         List<DataBaseEntity> expensesList=new ArrayList<>();
         List<ExpenseDataEntity> list=new ArrayList<>();
         Context context;
+        OnItemClickListener listener;
+        DialogDetails details=new DialogDetails();
 
 
      public IncomeListAdapter(Context context) {
@@ -56,6 +58,19 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return null;
     }
 
+    public interface OnItemClickListener{
+        void getIncomeData(DataBaseEntity dataBaseEntity,View view);
+        void getExpenseData(ExpenseDataEntity expenseDataEntity,View view);
+
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+         this.listener=listener;
+    }
+
+
+
+
 
 
     @Override
@@ -67,6 +82,8 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             ((IncomeListHolder)holder).categoryText.setText(expensesList.get(position).getCategory());
             ((IncomeListHolder)holder).incomeText.setText("+"+expensesList.get(position).getAmount());
             ((IncomeListHolder)holder).incomeText.setTextColor(context.getResources().getColor(R.color.income_color));
+
+
         }
 
         if (holder instanceof ExpensesListHolder){
@@ -128,7 +145,7 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 //        notifyDataSetChanged();
 //    }
 
-    public static class IncomeListHolder extends RecyclerView.ViewHolder {
+    public class IncomeListHolder extends RecyclerView.ViewHolder {
             TextView categoryText;
             TextView incomeText;
 
@@ -137,10 +154,21 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             categoryText=itemView.findViewById(R.id.main_category_text_view);
             incomeText=itemView.findViewById(R.id.expenses_text_view);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position=getAdapterPosition();
+                   if (listener!=null && position!=RecyclerView.NO_POSITION){
+                       listener.getIncomeData(expensesList.get(position),view);
+                      details.setUpdate(true);
+                   }
+                }
+            });
         }
     }
 
-    public static class ExpensesListHolder extends RecyclerView.ViewHolder{
+    public class ExpensesListHolder extends RecyclerView.ViewHolder{
 
          TextView category;
          TextView expenseText;
@@ -149,6 +177,17 @@ public class IncomeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
             category=itemView.findViewById(R.id.main_category_text_view_2);
             expenseText=itemView.findViewById(R.id.expenses_text_view_2);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position=getAdapterPosition();
+                    if (listener!=null && position!=RecyclerView.NO_POSITION){
+                        listener.getExpenseData(list.get(position-expensesList.size()),view);
+                        details.setUpdate(true);
+                    }
+                }
+            });
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.dailymanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.example.dailymanager.adapter.IncomeListAdapter;
 import com.example.dailymanager.database.ExpensesViewModel;
@@ -19,4 +21,13 @@ public class Expenses extends AppCompatActivity {
 
 
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater=getMenuInflater();
+//        menuInflater.inflate(R.menu.expense_section_menu,menu);
+//        return true;
+//    }
+
+
 }

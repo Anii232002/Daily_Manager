@@ -37,6 +37,10 @@ public class ExpensesRepository {
     public void update(DataBaseEntity dataBaseEntity){
         new UpdateAsyncTask(incomeDao).execute(dataBaseEntity);
     }
+
+    public void update(ExpenseDataEntity expenseDataEntity){
+        new UpdateExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
+    }
     public void delete(DataBaseEntity dataBaseEntity){
         new DeleteAsyncTask(incomeDao).execute(dataBaseEntity);
     }
@@ -48,7 +52,7 @@ public class ExpensesRepository {
         new DeleteAllAsyncTask(incomeDao).execute();
     }
     public void deleteExpenseAll(){
-
+        new DeleteAllExpensesAsyncTask(expenseDao).execute();
     }
 
     private static class InsertAsyncTask extends AsyncTask<DataBaseEntity,Void,Void>{
@@ -92,7 +96,7 @@ public class ExpensesRepository {
 
         @Override
         protected Void doInBackground(DataBaseEntity... dataBaseEntities) {
-            incomeDao.insert(dataBaseEntities[0]);
+            incomeDao.update(dataBaseEntities[0]);
             return null;
         }
 
@@ -108,6 +112,19 @@ public class ExpensesRepository {
         @Override
         protected Void doInBackground(Void... voids) {
             incomeDao.deleteAll();
+            return null;
+        }
+    }
+    private static class DeleteAllExpensesAsyncTask extends AsyncTask<Void,Void,Void>{
+        ExpenseDao expenseDao;
+
+        public DeleteAllExpensesAsyncTask(ExpenseDao expenseDao){
+            this.expenseDao=expenseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            expenseDao.deleteAll();
             return null;
         }
     }
@@ -127,17 +144,33 @@ public class ExpensesRepository {
         }
     }
 
-    public static class DeleteExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void>{
+    public static class DeleteExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void> {
         ExpenseDao expenseDao;
 
-        public DeleteExpenseAsyncTask(ExpenseDao expenseDao){
-            this.expenseDao=expenseDao;
+        public DeleteExpenseAsyncTask(ExpenseDao expenseDao) {
+            this.expenseDao = expenseDao;
         }
+
         @Override
         protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
             expenseDao.delete(expenseDataEntities[0]);
             return null;
         }
+    }
+
+        public static class UpdateExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void>{
+            ExpenseDao expenseDao;
+
+            public UpdateExpenseAsyncTask(ExpenseDao expenseDao){
+                this.expenseDao=expenseDao;
+            }
+            @Override
+            protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
+                expenseDao.update(expenseDataEntities[0]);
+                return null;
+            }
+
+
     }
 
 
