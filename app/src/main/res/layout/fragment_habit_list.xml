@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HabitsList">
+    tools:context=".Habits.HabitsList">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefresh"
@@ -32,6 +31,7 @@
         android:layout_margin="24dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="addHabit"
         android:src="@drawable/ic_plus" />
 
     <TextView

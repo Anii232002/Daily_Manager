@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey;
 public class HabitsDataEntity {
 
     @PrimaryKey(autoGenerate = true)
-    int id,imageid;
+    int id;
+
+    int imageid;
     String h_title,h_description,h_timestamp;
 
     public int getId() {

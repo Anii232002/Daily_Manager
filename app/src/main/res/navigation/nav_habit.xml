@@ -6,7 +6,7 @@
     app:startDestination="@id/habit_list">
     <fragment
         android:id="@+id/habit_list"
-        android:name="com.example.dailymanager.HabitsList"
+        android:name="com.example.dailymanager.Habits.HabitsList"
         android:label="Your Habits :)"
         tools:layout="@layout/fragment_habit_list" >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/habit_new"
-        android:name="com.example.dailymanager.HabitsNew"
+        android:name="com.example.dailymanager.Habits.HabitsNew"
         android:label="New Habit"
         tools:layout="@layout/fragment_habit_new" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/habits_update"
-        android:name="com.example.dailymanager.HabitsUpdate"
+        android:name="com.example.dailymanager.Habits.HabitsUpdate"
         android:label="Update Habit"
         tools:layout="@layout/fragment_habits_update" >
         <action
