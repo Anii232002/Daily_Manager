@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static ArrayList<String> task = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
