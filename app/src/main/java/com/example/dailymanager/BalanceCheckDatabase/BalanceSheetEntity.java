@@ -15,10 +15,14 @@ public class BalanceSheetEntity {
 
     public BalanceSheetEntity(){}
 
-    public BalanceSheetEntity(int income, int expense, int balance) {
+    public BalanceSheetEntity(int income, int expense) {
         BalanceSheetEntity.income=income;
         this.expense =expense;
-        this.balance =balance;
+
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     public int getId() {

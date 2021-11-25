@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.dailymanager.BalanceCheckDatabase.BalanceSheetEntity;
 
@@ -30,24 +31,28 @@ public class ExpensesRepository {
     }
 
     public void insert(ExpenseDataEntity expenseDataEntity){
-
+        new InsertExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
     }
 
     public void update(DataBaseEntity dataBaseEntity){
         new UpdateAsyncTask(incomeDao).execute(dataBaseEntity);
     }
+
+    public void update(ExpenseDataEntity expenseDataEntity){
+        new UpdateExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
+    }
     public void delete(DataBaseEntity dataBaseEntity){
         new DeleteAsyncTask(incomeDao).execute(dataBaseEntity);
     }
     public void delete(ExpenseDataEntity expenseDataEntity){
-
+        new DeleteExpenseAsyncTask(expenseDao).execute(expenseDataEntity);
     }
 
     public void deleteAll(){
         new DeleteAllAsyncTask(incomeDao).execute();
     }
     public void deleteExpenseAll(){
-
+        new DeleteAllExpensesAsyncTask(expenseDao).execute();
     }
 
     private static class InsertAsyncTask extends AsyncTask<DataBaseEntity,Void,Void>{
@@ -91,7 +96,7 @@ public class ExpensesRepository {
 
         @Override
         protected Void doInBackground(DataBaseEntity... dataBaseEntities) {
-            incomeDao.insert(dataBaseEntities[0]);
+            incomeDao.update(dataBaseEntities[0]);
             return null;
         }
 
@@ -110,6 +115,19 @@ public class ExpensesRepository {
             return null;
         }
     }
+    private static class DeleteAllExpensesAsyncTask extends AsyncTask<Void,Void,Void>{
+        ExpenseDao expenseDao;
+
+        public DeleteAllExpensesAsyncTask(ExpenseDao expenseDao){
+            this.expenseDao=expenseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            expenseDao.deleteAll();
+            return null;
+        }
+    }
 
     public static class InsertExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void>{
         ExpenseDao expenseDao;
@@ -124,6 +142,35 @@ public class ExpensesRepository {
             expenseDao.insert(expenseDataEntities[0]);
             return null;
         }
+    }
+
+    public static class DeleteExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void> {
+        ExpenseDao expenseDao;
+
+        public DeleteExpenseAsyncTask(ExpenseDao expenseDao) {
+            this.expenseDao = expenseDao;
+        }
+
+        @Override
+        protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
+            expenseDao.delete(expenseDataEntities[0]);
+            return null;
+        }
+    }
+
+        public static class UpdateExpenseAsyncTask extends AsyncTask<ExpenseDataEntity,Void,Void>{
+            ExpenseDao expenseDao;
+
+            public UpdateExpenseAsyncTask(ExpenseDao expenseDao){
+                this.expenseDao=expenseDao;
+            }
+            @Override
+            protected Void doInBackground(ExpenseDataEntity... expenseDataEntities) {
+                expenseDao.update(expenseDataEntities[0]);
+                return null;
+            }
+
+
     }
 
 

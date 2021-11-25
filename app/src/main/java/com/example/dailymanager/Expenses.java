@@ -1,22 +1,17 @@
 package com.example.dailymanager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
 
-import com.example.dailymanager.adapter.ExpensesListAdapter;
-import com.example.dailymanager.database.DataBaseEntity;
+import com.example.dailymanager.adapter.IncomeListAdapter;
 import com.example.dailymanager.database.ExpensesViewModel;
-import com.example.dailymanager.dataclass.DialogDetails;
-
-import java.util.List;
 
 public class Expenses extends AppCompatActivity {
 
-    ExpensesListAdapter adapter;
+    IncomeListAdapter adapter;
     ExpensesViewModel expensesViewModel;
 
     @Override
@@ -26,4 +21,13 @@ public class Expenses extends AppCompatActivity {
 
 
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater=getMenuInflater();
+//        menuInflater.inflate(R.menu.expense_section_menu,menu);
+//        return true;
+//    }
+
+
 }

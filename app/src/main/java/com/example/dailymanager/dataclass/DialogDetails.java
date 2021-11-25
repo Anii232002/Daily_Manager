@@ -1,14 +1,42 @@
 package com.example.dailymanager.dataclass;
 
+import android.app.Activity;
+import android.app.Application;
+
+import com.example.dailymanager.database.ExpensesViewModel;
+
 public class DialogDetails {
     static String income="0";
     static boolean add=false;
     static int expense=0;
     static String section= "";
+    static boolean update=false;
+    static boolean incomeUpdate=false;
+    static boolean isExpenseUpdate=false;
+
+    public boolean isUpdate() {
+        return update;
+    }
+
+    public void setUpdate(boolean update) {
+        DialogDetails.update = update;
+    }
+
+
+
+    public boolean isIncomeUpdate() {
+        return incomeUpdate;
+    }
+
+    public void setIncomeUpdate(boolean incomeUpdate) {
+        DialogDetails.incomeUpdate = incomeUpdate;
+    }
 
     public String getSection() {
         return section;
     }
+
+
 
     public void setSection(String section) {
         DialogDetails.section = section;
