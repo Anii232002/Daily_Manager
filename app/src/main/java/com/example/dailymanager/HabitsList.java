@@ -26,6 +26,7 @@ public class HabitsList extends Fragment {
 
     public HabitsList() {
         // Required empty public constructor
+        super(R.layout.fragment_habit_list);
     }
 
     /**

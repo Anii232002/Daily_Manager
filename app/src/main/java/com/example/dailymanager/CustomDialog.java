@@ -124,6 +124,7 @@ public class CustomDialog extends Dialog {
 
                if (details.isUpdate()){
                    details.setIncomeUpdate(true);
+                   details.setUpdate(false);
 
                    if (details.getSection().equals("income"))
                        details.setIncome(input);

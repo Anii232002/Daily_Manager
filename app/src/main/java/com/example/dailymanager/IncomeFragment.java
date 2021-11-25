@@ -57,7 +57,12 @@ public class IncomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         items.add(new DataItems("Salary",R.drawable.salary));
-        items.add(new DataItems("Awards",R.drawable.awards));
+        items.add(new DataItems("Awards", R.drawable.awards));
+        items.add(new DataItems("Invest",R.drawable.investement));
+        items.add(new DataItems("Lottery",R.drawable.lottery));
+        items.add(new DataItems("Coupons",R.drawable.coupon));
+        items.add(new DataItems("Rental",R.drawable.house));
+        items.add(new DataItems("Refunds",R.drawable.refunds));
 
         incomeRecyclerView=view.findViewById(R.id.recycler_view_income);
         incomeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));

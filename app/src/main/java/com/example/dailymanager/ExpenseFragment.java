@@ -48,6 +48,13 @@ public class ExpenseFragment extends Fragment {
         expenseRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
         expenseItems.add(new DataItems("Food",R.drawable.food));
         expenseItems.add(new DataItems("Bills",R.drawable.bill));
+        expenseItems.add(new DataItems("Shopping",R.drawable.shop));
+        expenseItems.add(new DataItems("Entertainment",R.drawable.entertainment));
+        expenseItems.add(new DataItems("Insurance",R.drawable.insurance));
+        expenseItems.add(new DataItems("Transportation",R.drawable.transportation));
+        expenseItems.add(new DataItems("Health",R.drawable.health));
+        expenseItems.add(new DataItems("Sports",R.drawable.sports));
+
         expenseAdapter=new ExpenseAdapter(expenseItems,getContext());
         expenseRecyclerView.setAdapter(expenseAdapter);
 
