@@ -98,9 +98,7 @@ public class ExpenseHome extends Fragment {
         adapter=new IncomeListAdapter(getActivity());
 
 
-        if (data.isEmpty() && expenseData.isEmpty()){
-            message.setVisibility(View.VISIBLE);
-        }
+
         DialogDetails details=new DialogDetails();
 
         shrd=getActivity().getSharedPreferences("demo",Context.MODE_PRIVATE);
@@ -176,8 +174,8 @@ public class ExpenseHome extends Fragment {
 
                 if (!dataBaseEntities.isEmpty())
                 message.setVisibility(View.GONE);
-                else
-                    message.setVisibility(View.VISIBLE);
+
+
             }
 
         });
@@ -190,6 +188,7 @@ public class ExpenseHome extends Fragment {
                if (!expenseDataEntities.isEmpty()){
                    message.setVisibility(View.GONE);
                }
+
 
            }
        });

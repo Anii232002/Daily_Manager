@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,10 +66,14 @@ public class IncomeFragment extends Fragment {
         items.add(new DataItems("Rental",R.drawable.house));
         items.add(new DataItems("Refunds",R.drawable.refunds));
 
+//        NavController navController= Navigation.findNavController(view);
+
+
         incomeRecyclerView=view.findViewById(R.id.recycler_view_income);
         incomeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
-        adapter=new IncomeAdapter(items,getContext());
+        adapter=new IncomeAdapter(items,getContext(),getActivity());
         incomeRecyclerView.setAdapter(adapter);
+
 
     }
 }

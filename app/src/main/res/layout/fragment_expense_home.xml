@@ -14,19 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="30dp"
+        app:cardElevation="20dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             >
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="102dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/income_title_text_view"
                     android:layout_width="81dp"
@@ -53,8 +56,8 @@
 
             <View
                 android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@color/black"/>
             <LinearLayout
@@ -86,9 +89,9 @@
 
             <View
                 android:layout_width="1dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
                 android:background="@color/black"/>
 
             <LinearLayout

@@ -1,21 +1,12 @@
 package com.example.dailymanager;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.dailymanager.adapter.NotesAdapter;
-import com.example.dailymanager.dataclass.Note;
-
-
-import java.util.ArrayList;
+import com.example.dailymanager.Habits.HabitsList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void habits(View view) {
-        Intent intent = new Intent(this,HabitsList.class);
+        Intent intent = new Intent(this, HabitsList.class);
         startActivity(intent);
     }
 
