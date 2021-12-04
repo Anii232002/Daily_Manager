@@ -26,8 +26,8 @@
             android:id="@+id/action_fieldSelection_to_expenseFragment"
             app:destination="@id/expenseFragment" />
         <action
-            android:id="@+id/action_fieldSelection_to_enterData"
-            app:destination="@id/enterData" />
+            android:id="@+id/action_fieldSelection_to_expenseHome"
+            app:destination="@id/expenseHome" />
     </fragment>
     <fragment
         android:id="@+id/incomeFragment"
@@ -48,8 +48,8 @@
             app:destination="@id/expenseHome" />
     </fragment>
     <fragment
-        android:id="@+id/enterData"
-        android:name="com.example.dailymanager.EnterData"
-        android:label="fragment_enter_data"
-        tools:layout="@layout/fragment_enter_data" />
+        android:id="@+id/bottomSheet"
+        android:name="com.example.dailymanager.BottomSheet"
+        android:label="fragment_bottom_sheet2"
+        tools:layout="@layout/fragment_bottom_sheet2" />
 </navigation>

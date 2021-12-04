@@ -3,6 +3,9 @@ package com.example.dailymanager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,24 +16,22 @@ import android.widget.TextView;
 import com.example.dailymanager.dataclass.DialogDetails;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import org.w3c.dom.Text;
 
-import java.util.zip.Inflater;
-
-public class BottomSheetFragment extends BottomSheetDialogFragment {
+public class BottomSheet extends BottomSheetDialogFragment {
 
     Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
 
-
-    public BottomSheetFragment() {
+    public BottomSheet() {
         // Required empty public constructor
-        }
+    }
 
+    // TODO: Rename and change types and number of parameters
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -38,7 +39,9 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_bottom_sheet, container, false);
+        View view= inflater.inflate(R.layout.fragment_bottom_sheet2, container, false);
+
+        // Inflate the layout for this fragment
 
 
         TextView t1=view.findViewById(R.id.amount_text);
@@ -141,6 +144,14 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
                         details.setExpense(Integer.parseInt(input));
                     DialogDetails.setAdd(true);
                 }
+
+
+                dismiss();
+
+
+
+
+
 
 
             }

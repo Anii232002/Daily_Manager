@@ -1,6 +1,5 @@
 package com.example.dailymanager.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.dailymanager.BottomSheetFragment;
-import com.example.dailymanager.CustomDialog;
+import com.example.dailymanager.BottomSheet;
 import com.example.dailymanager.R;
 import com.example.dailymanager.dataclass.DataItems;
 import com.example.dailymanager.dataclass.DialogDetails;
@@ -56,8 +51,8 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
                 d.setCategory(dataItems.getItem());
                 d.setSection("expense");
 
-                BottomSheetFragment bottomSheetFragment=new BottomSheetFragment();
-                bottomSheetFragment.show(((FragmentActivity)context).getSupportFragmentManager(),bottomSheetFragment.getTag());
+                BottomSheet bottomSheet=new BottomSheet();
+                bottomSheet.show(((FragmentActivity)context).getSupportFragmentManager(),bottomSheet.getTag());
 
             }
         });

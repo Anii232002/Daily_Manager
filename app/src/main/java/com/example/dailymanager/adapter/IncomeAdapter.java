@@ -10,26 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.dailymanager.BottomSheetFragment;
-import com.example.dailymanager.CustomDialog;
+import com.example.dailymanager.BottomSheet;
 import com.example.dailymanager.R;
 import com.example.dailymanager.dataclass.DataItems;
 import com.example.dailymanager.dataclass.DialogDetails;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.zip.Inflater;
 
 public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder> {
     List<DataItems> items=new ArrayList<>();
@@ -67,8 +59,8 @@ public class IncomeAdapter extends RecyclerView.Adapter<IncomeAdapter.IncomeView
                 d.setCategory(icItems.getItem());
                 d.setSection("income");
 
-                BottomSheetFragment bottomSheetFragment=new BottomSheetFragment();
-                bottomSheetFragment.show(((FragmentActivity)context).getSupportFragmentManager(),bottomSheetFragment.getTag());
+                BottomSheet bottomSheet=new BottomSheet();
+                bottomSheet.show(((FragmentActivity)context).getSupportFragmentManager(),bottomSheet.getTag());
 
 
             }
