@@ -26,15 +26,16 @@
             android:label="@string/title_activity_todo"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
-            android:name=".Habits.HabitsList"
+            android:name=".Todo_Addition"
+            android:exported="true"
+            android:label="@string/title_activity_todo"
+            android:theme="@style/Theme.DailyManager.NoActionBar" />
+        <activity
+            android:name=".HabitsHome"
             android:exported="true"
             android:label="Habits"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
-        <activity
-            android:name=".Habits.HabitsNew"
-            android:exported="true"
-            android:label="Create a Habit"
-            android:theme="@style/Theme.DailyManager.NoActionBar" />
+
         <activity
             android:name=".Expenses"
             android:exported="true" />
