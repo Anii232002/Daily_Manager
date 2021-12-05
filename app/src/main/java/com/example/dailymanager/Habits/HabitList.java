@@ -40,6 +40,7 @@ public class HabitList extends Fragment {
 
     private List<HabitsDataEntity> habitList;
     private HabitViewModel habitViewModel;
+
     private HabitListAdapter adapter;
     private Context mContext;
     public View view;
