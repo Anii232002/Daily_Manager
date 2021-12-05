@@ -11,9 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyManager">
-        <activity
-            android:name=".HabitsHome"
-            android:exported="false" />
+
         <activity
             android:name=".NotesAddition"
             android:exported="true" />
@@ -27,7 +25,16 @@
             android:exported="true"
             android:label="@string/title_activity_todo"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
-
+        <activity
+            android:name=".Habits.HabitsList"
+            android:exported="true"
+            android:label="Habits"
+            android:theme="@style/Theme.DailyManager.NoActionBar" />
+        <activity
+            android:name=".Habits.HabitsNew"
+            android:exported="true"
+            android:label="Create a Habit"
+            android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
             android:name=".Expenses"
             android:exported="true" />
