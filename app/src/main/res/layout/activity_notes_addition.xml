@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,60 +16,45 @@
         android:textColor="@color/black"
         android:textSize="40dp"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+  />
 
     <TextView
         android:id="@+id/txttitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="88dp"
         android:text="TITLE"
+        android:layout_marginLeft="120dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/edttitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.347" />
+       />
 
     <EditText
         android:id="@+id/edttitle"
         android:layout_width="372dp"
         android:layout_height="62dp"
-        android:layout_marginTop="196dp"
         android:background="#ECECEC"
         android:hint="Add TEXT"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
         android:inputType="text"
         android:padding="10dp"
         android:textAlignment="center"
-
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:textColorHint="@color/black" />
 
     <TextView
         android:id="@+id/txtdescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="100dp"
         android:text="DESCRIPTION"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edttitle"
-        app:layout_constraintVertical_bias="0.182" />
+
+        />
 
     <EditText
         android:id="@+id/edtdescription"
@@ -81,26 +65,18 @@
         android:inputType="text"
         android:padding="10dp"
         android:textAlignment="center"
-        android:textColorHint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtdescription"
-        app:layout_constraintVertical_bias="0.158" />
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="160dp"
+        android:layout_centerHorizontal="true"
         android:onClick="addnote"
-        android:text="SUBMIT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtdescription"
-        app:layout_constraintVertical_bias="0.567" />
+        android:text="SUBMIT" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

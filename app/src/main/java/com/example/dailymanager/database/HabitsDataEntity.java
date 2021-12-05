@@ -1,9 +1,13 @@
 package com.example.dailymanager.database;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.versionedparcelable.VersionedParcelize;
 
-
+@VersionedParcelize
 @Entity(tableName = "habits_table")
 public class HabitsDataEntity {
 
@@ -53,13 +57,6 @@ public class HabitsDataEntity {
         this.h_timestamp = h_timestamp;
     }
 
-    public HabitsDataEntity(String h_title, String h_description, String h_timestamp, int imageid)
-    {
-        this.h_title = h_title;
-        this.h_description = h_description;
-        this.h_timestamp = h_timestamp;
-        this.imageid = imageid;
-    }
 
 
 

@@ -10,18 +10,18 @@ import java.util.List;
 public class HabitViewModel extends AndroidViewModel {
     private HabitRepository mRepository;
 
-    private final LiveData<List<HabitsDataEntity>> mAllWords;
+    public final LiveData<List<HabitsDataEntity>> getAllHabits;
 
     public HabitViewModel(Application application) {
         super(application);
         mRepository = new HabitRepository(application);
-        mAllWords = mRepository.getAllHabits();
+        getAllHabits = mRepository.getAllHabits();
     }
 
 
 
 
-    LiveData<List<HabitsDataEntity>> getAllWords() { return mAllWords; }
+    public LiveData<List<HabitsDataEntity>> getAllHabits() { return getAllHabits; }
 
     public void addHabit(HabitsDataEntity habit) { mRepository.addHabit(habit); }
 
@@ -29,7 +29,8 @@ public class HabitViewModel extends AndroidViewModel {
 
     public void deleteHabit(HabitsDataEntity habit) { mRepository.deleteHabit(habit); }
 
-    public void deleteAllHabits(HabitsDataEntity habit) { mRepository.deleteAllHabit(); }
+    public void deleteAllHabits() { mRepository.deleteAllHabit(); }
+
 
 
 }

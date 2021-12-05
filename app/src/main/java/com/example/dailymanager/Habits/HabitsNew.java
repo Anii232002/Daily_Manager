@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,11 +17,19 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.dailymanager.Expenses;
 import com.example.dailymanager.R;
 import com.example.dailymanager.database.HabitViewModel;
 import com.example.dailymanager.database.HabitsDataEntity;
@@ -27,10 +37,10 @@ import com.example.dailymanager.database.HabitsDataEntity;
 import java.util.Calendar;
 
 
-public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
-    private String title = "";
-    private String description = "";
-    private String timestamp = "";
+public class HabitsNew extends Fragment implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+    private String title ;
+    private String description ;
+    private String timestamp ;
     private int drawableselected = 0;
 
     private int day = 0;
@@ -41,9 +51,10 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
 
     private String cleanDate = "";
     private String cleanTime = "";
+    private Context mContext;
 
-    private EditText et_habitTitle ;
-    private EditText et_habitDescription ;
+    private AppCompatEditText et_habitTitle ;
+    private AppCompatEditText et_habitDescription ;
 
     private Button btn_pickTime ;
     private Button btn_pickDate;
@@ -55,35 +66,62 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
     private Button btn_confirm ;
 
     private HabitViewModel habitViewModel;
+    View view;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_habit_new);
-        et_habitTitle = findViewById(R.id.et_habitTitle);
-        btn_confirm = findViewById(R.id.btn_confirm);
-        ic_foodselected = findViewById(R.id.iv_fastFoodSelected);
-        ic_smokeselected = findViewById(R.id.iv_smokingSelected);
-        btn_pickTime = findViewById(R.id.btn_pickTime);
-        ic_walkselcted = findViewById(R.id.iv_walkSelected);
-        btn_pickDate = findViewById(R.id.btn_pickDate);
-        tv_dateSelected = findViewById(R.id.tv_dateSelected);
-        tv_timeSelected = findViewById(R.id.tv_timeSelected);
-        et_habitDescription = findViewById(R.id.et_habitDescription);
-        habitViewModel = new ViewModelProvider(this).get(HabitViewModel.class);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+         view=inflater.inflate(R.layout.fragment_habit_new, container, false);
+
+
+        et_habitTitle = (AppCompatEditText) view.findViewById(R.id.et_habitTitle);
+        btn_confirm = view.findViewById(R.id.btn_confirm);
+        ic_foodselected = view.findViewById(R.id.iv_fastFoodSelected);
+        ic_smokeselected = view.findViewById(R.id.iv_smokingSelected);
+        btn_pickTime = view.findViewById(R.id.btn_pickTime);
+        ic_walkselcted = view.findViewById(R.id.iv_walkSelected);
+        btn_pickDate = view.findViewById(R.id.btn_pickDate);
+        tv_dateSelected = view.findViewById(R.id.tv_dateSelected);
+        tv_timeSelected = view.findViewById(R.id.tv_timeSelected);
+        et_habitDescription = (AppCompatEditText)view.findViewById(R.id.et_habitDescription);
+        setHasOptionsMenu(true);
+
        btn_confirm.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+
                addHabitToDB();
            }
-       });
+       });   //1:30-2:00
        pickDateAndTime();
        drawableSelected();
 
 
 
+return view;
     }
 
+    public HabitsNew() {
+        // Required empty public constructor
+        super();
+    }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mContext=context;
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        habitViewModel = new ViewModelProvider((ViewModelStoreOwner)this).get(HabitViewModel.class);
+
+    }
 
     private void pickDateAndTime() {
 
@@ -94,7 +132,7 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
              public void onClick(View view) {
                  getDateCalender();
 
-                  new DatePickerDialog(HabitsNew.this,(DatePickerDialog.OnDateSetListener)HabitsNew.this,year,month,day).show();
+                  new DatePickerDialog(mContext,(DatePickerDialog.OnDateSetListener)HabitsNew.this,year,month,day).show();
              }
          });
 
@@ -107,20 +145,23 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
             public void onClick(View view) {
                 getTimeCalender();
 
-                 new TimePickerDialog(HabitsNew.this,(TimePickerDialog.OnTimeSetListener)HabitsNew.this,hour,minute,true).show();
+                 new TimePickerDialog(getContext(),(TimePickerDialog.OnTimeSetListener)HabitsNew.this,hour,minute,true).show();
 
             }
         });
     }
 
+
+
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+        cleanDate = Calc.INSTANCE.cleanDate(i,i1,i2);
         tv_dateSelected.setText("Date:"+cleanDate);
     }
 
     @Override
     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-   //cleanTime = Calc.INSTANCE.cleanTime(hour,minute);
+   cleanTime = Calc.INSTANCE.cleanTime(hour,minute);
         tv_timeSelected.setText("Time:"+cleanTime);
     }
 
@@ -149,7 +190,7 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
                ic_walkselcted.setSelected(!ic_walkselcted.isSelected());
                drawableselected = R.drawable.ic_walk_selected;
 
-               ic_smokeselected.setSelected(false) ;
+               ic_smokeselected.setSelected(false);  ;
                ic_foodselected.setSelected(false);
 
 
@@ -193,25 +234,30 @@ public class HabitsNew extends AppCompatActivity implements TimePickerDialog.OnT
     private void addHabitToDB() {
 
         //Get text from editTexts
-        title = et_habitTitle.toString();
-        description = et_habitDescription.toString();
+        title = et_habitTitle.getText().toString();
+        description = String.valueOf(et_habitDescription.getText());
 
         //Create a timestamp string for our recyclerview
-        timestamp = cleanDate+cleanTime;
+        timestamp = cleanDate+" "+cleanTime;
 
         //Check that the form is complete before submitting data to the database
         if (!(title.isEmpty() || description.isEmpty() || timestamp.isEmpty() || drawableselected == 0)) {
-           HabitsDataEntity habit = new HabitsDataEntity(title, description, timestamp, drawableselected);
+           HabitsDataEntity habit = new HabitsDataEntity();
+           habit.setH_description(description);
+           habit.setH_timestamp(timestamp);
+           habit.setH_title(title);
+           habit.setImageid(drawableselected);
+
 
             //add the habit if all the fields are filled
             habitViewModel.addHabit(habit);
-            Toast.makeText(HabitsNew.this, "Habit created successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "Habit created successfully!", Toast.LENGTH_SHORT).show();
 
             //navigate back to our home fragment
-            Intent intent = new Intent(this, HabitsList.class);
-            startActivity(intent);
-        } else {
-            Toast.makeText(HabitsNew.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(view).navigate(R.id.action_habitsNew_to_habitList);
+        }
+         else {
+            Toast.makeText(mContext, "Please fill all the fields", Toast.LENGTH_SHORT).show();
         }
     }
 

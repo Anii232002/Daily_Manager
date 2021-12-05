@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Habits.HabitsList">
+    android:background="@color/black"
+    tools:context=".Habits.HabitList">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefresh"
@@ -20,6 +21,9 @@
             android:layout_alignParentTop="true"
             tools:itemCount="20"
             tools:listitem="@layout/recycler_habit_item" />
+
+
+
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -45,6 +49,8 @@
         android:textSize="20sp"
         android:textStyle="italic"
         android:visibility="gone" />
+
+
 
 
 </RelativeLayout>

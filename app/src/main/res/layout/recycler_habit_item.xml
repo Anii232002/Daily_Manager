@@ -26,6 +26,15 @@
             android:alpha=".1"
             android:src="@drawable/ic_walk" />
 
+        <ImageButton
+            android:id="@+id/itemdelete"
+            android:onClick="habitdelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:layout_marginLeft="360dp"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,9 +56,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Title Big"
-                    android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -66,7 +75,6 @@
                     android:layout_marginVertical="4dp"
                     android:background="@android:color/black" />
             </LinearLayout>
-
 
             <TextView
                 android:id="@+id/tv_item_description"
