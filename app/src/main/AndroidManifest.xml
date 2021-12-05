@@ -24,12 +24,14 @@
             android:name=".Todo"
             android:exported="true"
             android:label="@string/title_activity_todo"
-            android:theme="@style/Theme.DailyManager.NoActionBar" />
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".Todo_Addition"
             android:exported="true"
             android:label="@string/title_activity_todo"
-            android:theme="@style/Theme.DailyManager.NoActionBar" />
+            android:parentActivityName=".Todo"
+            />
         <activity
             android:name=".HabitsHome"
             android:exported="true"
