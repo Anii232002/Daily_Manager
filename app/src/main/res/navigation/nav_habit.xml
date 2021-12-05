@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_habit.xml"
+    app:startDestination="@id/habitList">
+
+    <fragment
+        android:id="@+id/habitList"
+        android:name="com.example.dailymanager.Habits.HabitList"
+        android:label="fragment_habit_list"
+        tools:layout="@layout/fragment_habit_list" >
+        <action
+            android:id="@+id/action_habitList_to_habitsUpdate"
+            app:destination="@id/habitsUpdate" />
+        <action
+            android:id="@+id/action_habitList_to_habitsNew"
+            app:destination="@id/habitsNew" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitsNew"
+        android:name="com.example.dailymanager.Habits.HabitsNew"
+        android:label="fragment_habit_new"
+        tools:layout="@layout/fragment_habit_new" >
+        <action
+            android:id="@+id/action_habitsNew_to_habitList"
+            app:destination="@id/habitList" />
+    </fragment>
+    <fragment
+        android:id="@+id/habitsUpdate"
+        android:name="com.example.dailymanager.Habits.HabitsUpdate"
+        android:label="fragment_habits_update"
+        tools:layout="@layout/fragment_habits_update" >
+        <action
+            android:id="@+id/action_habitsUpdate_to_habitList"
+            app:destination="@id/habitList" />
+    </fragment>
+</navigation>
