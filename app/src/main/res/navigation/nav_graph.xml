@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_fieldSelection_to_expenseFragment"
             app:destination="@id/expenseFragment" />
+        <action
+            android:id="@+id/action_fieldSelection_to_expenseHome"
+            app:destination="@id/expenseHome" />
     </fragment>
     <fragment
         android:id="@+id/incomeFragment"
@@ -44,4 +47,9 @@
             android:id="@+id/action_expenseFragment_to_expenseHome"
             app:destination="@id/expenseHome" />
     </fragment>
+    <fragment
+        android:id="@+id/bottomSheet"
+        android:name="com.example.dailymanager.BottomSheet"
+        android:label="fragment_bottom_sheet2"
+        tools:layout="@layout/fragment_bottom_sheet2" />
 </navigation>

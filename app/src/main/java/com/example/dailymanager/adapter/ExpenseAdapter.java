@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.dailymanager.CustomDialog;
+import com.example.dailymanager.BottomSheet;
 import com.example.dailymanager.R;
 import com.example.dailymanager.dataclass.DataItems;
 import com.example.dailymanager.dataclass.DialogDetails;
@@ -24,6 +24,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
 
     List<DataItems> expenseItems=new ArrayList<>();
     Context context;
+
 
     public ExpenseAdapter(List<DataItems> expenseItems, Context context){
         this.expenseItems=expenseItems;
@@ -49,8 +50,10 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.ExpenseV
                 DialogDetails d=new DialogDetails();
                 d.setCategory(dataItems.getItem());
                 d.setSection("expense");
-                CustomDialog cd=new CustomDialog(context);
-                cd.show();
+
+                BottomSheet bottomSheet=new BottomSheet();
+                bottomSheet.show(((FragmentActivity)context).getSupportFragmentManager(),bottomSheet.getTag());
+
             }
         });
     }

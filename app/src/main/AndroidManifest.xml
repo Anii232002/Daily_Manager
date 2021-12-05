@@ -13,13 +13,6 @@
         android:theme="@style/Theme.DailyManager">
 
         <activity
-            android:name=".task_layout"
-            android:exported="false" />
-        <activity
-            android:name=".Todo_Addition"
-            android:parentActivityName=".Todo"
-            android:exported="false" />
-        <activity
             android:name=".NotesAddition"
             android:exported="true" />
         <activity
@@ -29,10 +22,9 @@
             android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
             android:name=".Todo"
-            android:parentActivityName=".MainActivity"
             android:exported="true"
             android:label="@string/title_activity_todo"
- />
+            android:theme="@style/Theme.DailyManager.NoActionBar" />
         <activity
             android:name=".Habits.HabitsList"
             android:exported="true"

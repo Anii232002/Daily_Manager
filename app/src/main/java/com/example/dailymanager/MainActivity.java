@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.dailymanager.Habits.HabitsList;
+import com.example.dailymanager.Habits.HabitList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void habits(View view) {
-        Intent intent = new Intent(this, HabitsList.class);
+        Intent intent = new Intent(this, HabitsHome.class);
         startActivity(intent);
     }
 

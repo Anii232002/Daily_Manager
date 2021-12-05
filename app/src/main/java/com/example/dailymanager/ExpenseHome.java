@@ -53,6 +53,8 @@ public class ExpenseHome extends Fragment {
     TextView balanceText;
     int id1;
     int id2;
+    List<DataBaseEntity> data=new ArrayList<>();
+    List<ExpenseDataEntity> expenseData=new ArrayList<>();
     TextView message;
     TextView incomeMain;
 
@@ -112,6 +114,9 @@ public class ExpenseHome extends Fragment {
 
         b1=new BalanceSheetEntity(shrd.getInt(INCOME_KEY,0)+Integer.parseInt(details.getIncome()),expensesshrd.getInt(EXPENSE_KEY,0)+details.getExpense());
 
+//            incomeMain.setText(String.valueOf(shrd.getInt(INCOME_KEY,0)));
+////            expensesText.setText(String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
+            balanceText.setText(String.valueOf(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0)));
 
         if (details.getSection().equals("income") && !(d.getAmount()==null || d.getCategory()==null) && DialogDetails.isAdd()) {
             expensesViewModel.insert(d);
@@ -134,6 +139,7 @@ public class ExpenseHome extends Fragment {
         }
        else {
             incomeMain.setText(String.valueOf(shrd.getInt(INCOME_KEY, 0)));
+            b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
             balanceText.setText(String.valueOf(b1.getBalance()));
         }
 
@@ -153,7 +159,7 @@ public class ExpenseHome extends Fragment {
        }
        else{
            expensesText.setText(String.valueOf(expensesshrd.getInt(EXPENSE_KEY,0)));
-
+           b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
            balanceText.setText(String.valueOf(b1.getBalance()));
        }
 
@@ -168,6 +174,8 @@ public class ExpenseHome extends Fragment {
 
                 if (!dataBaseEntities.isEmpty())
                 message.setVisibility(View.GONE);
+
+
             }
 
         });
@@ -180,6 +188,8 @@ public class ExpenseHome extends Fragment {
                if (!expenseDataEntities.isEmpty()){
                    message.setVisibility(View.GONE);
                }
+
+
            }
        });
 
@@ -228,7 +238,7 @@ public class ExpenseHome extends Fragment {
            b1.setBalance(shrd.getInt(INCOME_KEY,0)-expensesshrd.getInt(EXPENSE_KEY,0));
            balanceText.setText(String.valueOf(b1.getBalance()));
        }
-       else{
+       if(details.isIncomeUpdate() && details.getSection().equals("expense")){
            SharedPreferences.Editor editor= expensesshrd.edit();
            editor.putInt(EXPENSE_KEY,currentExpense-deletedExpense);
            editor.apply();
@@ -307,8 +317,10 @@ public class ExpenseHome extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                List<DataBaseEntity> data=expensesViewModel.getAllIncome().getValue();
-                List<ExpenseDataEntity> expenseData=expensesViewModel.getAllExpenses().getValue();;
+                 data=expensesViewModel.getAllIncome().getValue();
+                 expenseData=expensesViewModel.getAllExpenses().getValue();
+
+
                 if (viewHolder instanceof IncomeListAdapter.IncomeListHolder){
                     expensesViewModel.delete(adapter.getDataAt(((IncomeListAdapter.IncomeListHolder)viewHolder).getAdapterPosition()));
                     SharedPreferences.Editor editor=shrd.edit();

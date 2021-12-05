@@ -12,7 +12,7 @@ public class DialogDetails {
     static String section= "";
     static boolean update=false;
     static boolean incomeUpdate=false;
-    static boolean isExpenseUpdate=false;
+
 
     public boolean isUpdate() {
         return update;

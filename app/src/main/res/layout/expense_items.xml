@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/expense_cardview_item"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
         app:cardCornerRadius="80dp"
         >
@@ -28,20 +28,24 @@
                 android:layout_height="51dp"
                 android:src="@drawable/food" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/expense_category_text_view"
-                android:layout_width="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:text="food"
-                android:textColor="@color/black" />
+
 
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/expense_category_text_view"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="9dp"
+        android:text="food"
+        android:textColor="@color/black" />
 
 
 </LinearLayout>
