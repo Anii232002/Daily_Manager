@@ -101,7 +101,7 @@
 
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_walk" />
+                    android:src="@drawable/ic_walk_selected" />
 
                 <ImageView
                     android:id="@+id/iv_fastFoodSelected"
@@ -109,7 +109,7 @@
                     android:layout_height="100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_food" />
+                    android:src="@drawable/ic_food_selected" />
 
                 <ImageView
                     android:id="@+id/iv_smokingSelected"

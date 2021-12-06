@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#2C2F32"
+    android:background="#FFFFFF"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -23,10 +23,11 @@
         android:layout_column="0"
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
-        app:cardBackgroundColor="#ED7B7B"
+        app:cardBackgroundColor="#A8C3C1"
+
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        app:cardElevation="30dp"
         android:onClick="expenses">
 
         <LinearLayout
@@ -65,7 +66,7 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:layout_margin="8dp"
-        app:cardBackgroundColor="#ED7B7B"
+        app:cardBackgroundColor="#A8C3C1"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         android:onClick="habits">
@@ -107,7 +108,7 @@
         android:layout_gravity="fill"
         android:layout_margin="8dp"
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#ED7B7B"
+        app:cardBackgroundColor="#A8C3C1"
         app:cardElevation="8dp"
         android:onClick="todo">
 
@@ -147,7 +148,7 @@
         android:layout_columnWeight="1"
         android:layout_gravity="fill"
         android:layout_margin="8dp"
-        app:cardBackgroundColor="#ED7B7B"
+        app:cardBackgroundColor="#A8C3C1"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
         android:onClick="notes">

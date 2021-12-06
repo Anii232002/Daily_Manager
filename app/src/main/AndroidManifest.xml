@@ -20,12 +20,17 @@
         </activity>
         <activity
             android:name=".NotesAddition"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".Notes"
+            />
+
         <activity
             android:name=".Notes"
             android:exported="true"
             android:label="@string/title_activity_notes"
-            android:theme="@style/Theme.DailyManager.NoActionBar" />
+            android:parentActivityName=".MainActivity"
+            />
+
         <activity
             android:name=".Todo"
             android:exported="true"
@@ -40,7 +45,15 @@
             android:name=".HabitsHome"
             android:exported="true"
             android:label="Habits"
+<<<<<<< HEAD
             android:theme="@style/Theme.DailyManager.NoActionBar" />
+=======
+
+            />
+
+
+
+>>>>>>> 85fed362d12068c06356980144a659233d2da347
         <activity
             android:name=".Expenses"
             android:exported="true" />
