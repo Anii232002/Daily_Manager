@@ -61,7 +61,7 @@ import java.util.ArrayList;
 
                 title = itemView.findViewById(R.id.title);
                 description = itemView.findViewById(R.id.description);
-                itemView.findViewById(R.id.itemdelete).setOnClickListener((View.OnClickListener) (new View.OnClickListener(){
+              /*  itemView.findViewById(R.id.itemdelete).setOnClickListener((View.OnClickListener) (new View.OnClickListener(){
                     public ArrayList<Note> noteArrayList;
                     final int position = NotesAdapter.ViewHolder.this.getAdapterPosition();
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -85,7 +85,7 @@ import java.util.ArrayList;
                     }
 
 
-                }));
+                }));*/
             }
         }
     }

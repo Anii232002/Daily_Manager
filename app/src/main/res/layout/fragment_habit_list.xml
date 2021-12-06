@@ -8,6 +8,18 @@
     android:background="@color/black"
     tools:context=".Habits.HabitList">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add habits by clicking on + button"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="#6C6464"
+        android:textStyle="bold"
+
+        />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"
