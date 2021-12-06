@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/habitList"
         android:name="com.example.dailymanager.Habits.HabitList"
-        android:label="fragment_habit_list"
+        android:label="Your Habits!"
         tools:layout="@layout/fragment_habit_list" >
         <action
             android:id="@+id/action_habitList_to_habitsUpdate"
@@ -20,11 +20,14 @@
     <fragment
         android:id="@+id/habitsNew"
         android:name="com.example.dailymanager.Habits.HabitsNew"
-        android:label="fragment_habit_new"
+        android:label="Create a new habit"
         tools:layout="@layout/fragment_habit_new" >
         <action
             android:id="@+id/action_habitsNew_to_habitList"
-            app:destination="@id/habitList" />
+            app:destination="@id/habitList"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/habitsNew"/>
+
     </fragment>
     <fragment
         android:id="@+id/habitsUpdate"

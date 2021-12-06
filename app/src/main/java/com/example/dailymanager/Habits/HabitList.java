@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -26,6 +27,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.dailymanager.R;
 import com.example.dailymanager.adapter.HabitListAdapter;
 import com.example.dailymanager.adapter.OnItemClickListener;
+import com.example.dailymanager.database.ExpensesViewModel;
 import com.example.dailymanager.database.HabitViewModel;
 import com.example.dailymanager.database.HabitsDataEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,15 +59,13 @@ public class HabitList extends Fragment {
 
         this.adapter = new HabitListAdapter(this::OnItemClicked);
         RecyclerView var10000 = (RecyclerView)view.findViewById(R.id.rv_habits);
-        Intrinsics.checkNotNullExpressionValue(var10000, "rv_habits");
+
         HabitListAdapter var10001 = this.adapter;
-        if (var10001 == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("adapter");
-        }
+
 
         var10000.setAdapter((RecyclerView.Adapter)var10001);
         var10000 = (RecyclerView)view.findViewById(R.id.rv_habits);
-        Intrinsics.checkNotNullExpressionValue(var10000, "rv_habits");
+
         var10000.setLayoutManager((RecyclerView.LayoutManager)(new LinearLayoutManager(mContext)));
         this.viewModels();
 
@@ -75,15 +75,17 @@ public class HabitList extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_habitList_to_habitsNew);
             }
         }));
+
+
         ((SwipeRefreshLayout)view.findViewById(R.id.swipeToRefresh)).setOnRefreshListener((SwipeRefreshLayout.OnRefreshListener)(new SwipeRefreshLayout.OnRefreshListener() {
             public final void onRefresh() {
                 HabitList.access$getAdapter$p(HabitList.this).setData(HabitList.access$getHabitList$p(HabitList.this));
                 SwipeRefreshLayout var10000 = (SwipeRefreshLayout)view.findViewById(R.id.swipeToRefresh);
-                Intrinsics.checkNotNullExpressionValue(var10000, "swipeToRefresh");
+
                 var10000.setRefreshing(false);
             }
         }));
-        setHasOptionsMenu(true);
+
         return  view;
 
 
@@ -102,18 +104,17 @@ public class HabitList extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
 
 
     private final void viewModels() {
         ViewModel var10001 = (new ViewModelProvider((ViewModelStoreOwner)this)).get(HabitViewModel.class);
-        Intrinsics.checkNotNullExpressionValue(var10001, "ViewModelProvider(this).…bitViewModel::class.java)");
+
         this.habitViewModel = (HabitViewModel)var10001;
         HabitViewModel var10000 = this.habitViewModel;
-        if (var10000 == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("habitViewModel");
-        }
+
 
         var10000.getAllHabits.observe((LifecycleOwner)this , (Observer)(new Observer() {
             // $FF: synthetic method
@@ -155,6 +156,8 @@ public class HabitList extends Fragment {
     public void onCreateOptionsMenu(@NotNull Menu menu, @NotNull MenuInflater inflater) {
 
         inflater.inflate(R.menu.nav_habit, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     public boolean onOptionsItemSelected(@NotNull MenuItem item) {
