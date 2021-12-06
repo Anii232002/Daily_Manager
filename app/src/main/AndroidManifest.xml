@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyManager">
+        <activity android:name=".SplashScreenActivity" android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NotesAddition"
             android:exported="true" />
@@ -24,31 +30,24 @@
             android:name=".Todo"
             android:exported="true"
             android:label="@string/title_activity_todo"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Todo_Addition"
             android:exported="true"
             android:label="@string/title_activity_todo"
-            android:parentActivityName=".Todo"
-            />
+            android:parentActivityName=".Todo" />
         <activity
             android:name=".HabitsHome"
             android:exported="true"
             android:label="Habits"
             android:theme="@style/Theme.DailyManager.NoActionBar" />
-
         <activity
             android:name=".Expenses"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
