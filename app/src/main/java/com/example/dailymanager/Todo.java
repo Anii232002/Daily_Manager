@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,6 +25,7 @@ public class Todo<list> extends AppCompatActivity {
     private ArrayAdapter<String> taskAdapter;
     private ListView listView;
     private Bundle bundle;
+    private TextView txtView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class Todo<list> extends AppCompatActivity {
         setContentView(R.layout.activity_todo);
 
 
-
+        txtView = findViewById(R.id.textView2);
 
         listView = findViewById(R.id.listView);
 
@@ -44,7 +46,12 @@ public class Todo<list> extends AppCompatActivity {
         }catch(Exception e){
         }
         if(!(value.equals("")) && value != null) {
-                task.add(value);
+            task.add(value);
+            try {
+                if(!task.isEmpty())  txtView.setVisibility(View.INVISIBLE);
+            } catch (Exception e){
+                Toast.makeText(Todo.this, e.toString(), Toast.LENGTH_SHORT).show();
+            }
         }
         setUpListViewListener();
 
@@ -55,8 +62,12 @@ public class Todo<list> extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intent = new Intent(Todo.this,Todo_Addition.class);
                 Todo.this.startActivity(intent);
+
+
             }
         });
     }
@@ -85,6 +96,9 @@ public class Todo<list> extends AppCompatActivity {
 
                 task.remove(i);
                 taskAdapter.notifyDataSetChanged();
+
+                if(task.isEmpty()) txtView.setVisibility(View.VISIBLE);
+
                 return true;
             }
         });
