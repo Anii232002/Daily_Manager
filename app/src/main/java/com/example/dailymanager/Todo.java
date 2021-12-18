@@ -17,7 +17,9 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Todo<list> extends AppCompatActivity {
 
@@ -31,6 +33,11 @@ public class Todo<list> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo);
+
+        Calendar calender = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calender.getTime());
+        TextView date = findViewById(R.id.text_date_display);
+        date.setText(currentDate);
 
 
         txtView = findViewById(R.id.textView2);
