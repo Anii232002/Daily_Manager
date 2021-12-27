@@ -3,7 +3,7 @@
 Daily manager app to help user sort heir daily taks and to mprove their lifestyle
 
 1.Expense Tracker Domain:
-Used SQL database with room library for backend
+Used SQL database with room library for backend (MVVM pattern)
 
 <img src="https://github.com/Anii232002/Daily_Manager/blob/master/Screenshots/income_main.PNG" width="400" height="700"> 
 
