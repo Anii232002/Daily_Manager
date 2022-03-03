@@ -15,6 +15,14 @@ Used SQL database with room library for backend (MVVM pattern)
 
 <img src="https://github.com/Anii232002/Daily_Manager/blob/master/Screenshots/After_Income_section.PNG" width="400" height="700"> 
 
+2. Habit Tracker Domain:
+ 
+ Uses SQL db with room library for backend (MVVM pattern)
+
+3. To-Do list Domain
+
+ Uses Firebase to maintain list of to-fo with easy delete ooption on swipe right
+
 
 
 
